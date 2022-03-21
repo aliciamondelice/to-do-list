@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Ajouter une tâche
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,21 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Ajouter une tâche</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="p-20">
+    <div class="flex direction">
+      <label class="ion-margin-top" for="name">Tâche :</label>
+      <input id="name" type="text" formControlName="nametodo">
+
+      <label class="ion-margin-top" for="date">Date : </label>
+      <input class="ion-margin-bottom" id="date" type="date" formControlName="datetodo">
+    </div>
+    <ion-button color="tertiary" expand="block" type="submit" [disabled]="!todoForm.valid">
+      <ion-icon name="add" slot="start"></ion-icon>
+      Ajouter une tâche
+    </ion-button>
+  </form>
 </ion-content>
